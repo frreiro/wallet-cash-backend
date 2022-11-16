@@ -1,7 +1,7 @@
 import {  NextFunction, Request, Response } from 'express';
 import { IUserRepositories } from '../interfaces/User/IUserRepositories.js';
 import { ITokenPayload } from '../interfaces/Utils/ITokenHandler.js';
-import { ITokenMiddleware } from '../interfaces/Utils/ITokenMiddleware.js';
+import { ITokenMiddleware, IUserPayload } from '../interfaces/Utils/ITokenMiddleware.js';
 import AppError from '../utils/appError.js';
 import { TokenHandler } from '../utils/token.js';
 
@@ -15,11 +15,10 @@ export class TokenMiddlware extends TokenHandler implements ITokenMiddleware{
 	
 	async init(req: Request,res: Response, next: NextFunction): Promise<void>{
 		const token = await this.getToken(req.headers);
-		console.log(token);
 		const tokenPayload = await this.validateToken(token);
-		await this.validateTokenPayload(tokenPayload);
+		const userData = await this.validateTokenPayload(tokenPayload);
 
-		res.locals.userInfo = tokenPayload;
+		res.locals.userInfo = userData;
 		next();
 	}
 
@@ -31,10 +30,11 @@ export class TokenMiddlware extends TokenHandler implements ITokenMiddleware{
 		return token;
 	}
 
-	async validateTokenPayload(tokenPayload: ITokenPayload): Promise<void>{
+	async validateTokenPayload(tokenPayload: ITokenPayload): Promise<IUserPayload>{
 		const {id, accountId} = tokenPayload;
 		if(!id || !accountId) throw new AppError('Invalid token', 404);
-		const user = this.userRespositories.findByIdAndAccoutId(id, accountId);
+		const {password,...user} = await this.userRespositories.findByIdAndAccoutId(id, accountId);
 		if(!user) throw new AppError('Invalid token', 404);
+		return user;
 	}
 }

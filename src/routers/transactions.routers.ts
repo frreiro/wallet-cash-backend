@@ -1,5 +1,5 @@
 import { Router,Request,  Response, NextFunction } from 'express';
-import { tokenMiddleware } from '../implementations/transactions.js';
+import { accountControllers, tokenMiddleware } from '../implementations/transactions.js';
 
 const transactionsRouters = Router();
 
@@ -10,7 +10,7 @@ transactionsRouters.use(async (req: Request, res: Response, next: NextFunction) 
 
 transactionsRouters.get('/account',
 	async (req, res) => {
-		res.sendStatus(200);
+		await accountControllers.getBalance(req, res);
 	});
 
 export default transactionsRouters;
