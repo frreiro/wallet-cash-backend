@@ -14,12 +14,11 @@ export default class AuthRouters{
 	}
 
 	async signup(){
-		this.userSchemas.signupSchema();
-		this.authRouters.post('/signup',this.userSchemas.validate.bind(this.userSchemas),this.userController.create.bind(this.userController));
+		this.authRouters.post('/signup',this.userSchemas.authSchema().validate.bind(this.userSchemas),this.userController.create.bind(this.userController));
 	}
 
 	async singin(){
-		this.authRouters.post('/signin', this.userSchemas.validate.bind(this.userSchemas),this.userController.login.bind(this.userController));
+		this.authRouters.post('/signin', this.userSchemas.authSchema().validate.bind(this.userSchemas),this.userController.login.bind(this.userController));
 	}
 
 }

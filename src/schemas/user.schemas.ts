@@ -4,18 +4,14 @@ import { IUserInput } from '../interfaces/User/IUserServices.js';
 import { Schemas } from '../middlewares/schemas.js';
 
 export class UserSchemas extends Schemas implements IUserSchemas{
-	public schema: Joi.ObjectSchema;
+	public schema: Joi.ObjectSchema;	
 
-	public setSchemaObject(): Joi.ObjectSchema<IUserInput> {
-		return this.schema;
-	}
-	
-
-	public signupSchema(): void {
+	public authSchema() {
 		this.schema = Joi.object<IUserInput>({
 			username: Joi.string().min(3).required(),
 			password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$/).required()
 		});
-		this.setSchemaObject();
+		return this;
 	}
+	
 }
