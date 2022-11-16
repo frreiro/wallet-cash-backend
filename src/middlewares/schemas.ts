@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
+import { ISchemas } from '../interfaces/ISchemas.js';
 
-export abstract class Schemas {
+export abstract class Schemas implements ISchemas {
 	protected abstract setSchemaObject(): Joi.ObjectSchema;
 
 	async validate(req: Request, res: Response, next: NextFunction){

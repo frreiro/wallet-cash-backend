@@ -1,8 +1,9 @@
 import Joi from 'joi';
+import { IUserSchemas } from '../interfaces/User/IUserSchemas.js';
 import { IUserInput } from '../interfaces/User/IUserServices.js';
 import { Schemas } from '../middlewares/schemas.js';
 
-export class UserSchemas extends Schemas {
+export class UserSchemas extends Schemas implements IUserSchemas{
 
 	public setSchemaObject(): Joi.ObjectSchema<IUserInput> {
 		return this.signupSchema();
