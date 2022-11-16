@@ -10,15 +10,16 @@ export default class AuthRouters{
 
 	constructor(){
 		this.signup();
-		console.log();
+		this.singin();
 	}
 
 	async signup(){
-		this.authRouters.post('/signup',this.userSchemas.validate.bind(this.userSchemas) ,this.userController.create.bind(this.userController));
+		this.userSchemas.signupSchema();
+		this.authRouters.post('/signup',this.userSchemas.validate.bind(this.userSchemas),this.userController.create.bind(this.userController));
 	}
 
-	//async singin(){
-	//	this.authRouters.post('/signin', this.userController.login);
-	//}
+	async singin(){
+		this.authRouters.post('/signin', this.userSchemas.validate.bind(this.userSchemas),this.userController.login.bind(this.userController));
+	}
 
 }

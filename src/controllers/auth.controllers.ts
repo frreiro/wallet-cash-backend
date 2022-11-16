@@ -12,10 +12,10 @@ export class UserControllers implements IUserControllers{
 		res.sendStatus(201);
 	}
 
-	//async login(req: Request, res: Response): Promise<void>{
-	//	const userInfo: IUserInput = req.body;
-	//	const token = await this.userServices.logUser(userInfo);
-	//	res.send(token).status(200);
-	//}
+	async login(req: Request, res: Response): Promise<void>{
+		const userInfo: IUserInput = req.body;
+		const token = await this.userServices.logUser(userInfo);
+		res.send(token).status(200);
+	}
 	
 }
