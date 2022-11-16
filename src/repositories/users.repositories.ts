@@ -17,4 +17,13 @@ export class UserRespositories implements IUserRepositories{
 			}
 		});
 	}
+
+	async findByIdAndAccoutId(id: number, accountId: number): Promise<Users> {
+		return await prisma.users.findFirst({
+			where: {
+				id: id,
+				accountId: accountId
+			}
+		});
+	}
 }

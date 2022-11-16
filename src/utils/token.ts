@@ -10,12 +10,13 @@ export class TokenHandler implements ITokenHandler{
 		return token;
 	}
 
-	validateToken(token: string): ITokenPayload{
+	async validateToken(token: string): Promise<ITokenPayload>{
 		try {
 			const tokenPayload = <ITokenPayload>jwt.verify(token, this.JWT_KEY);
 			return tokenPayload;
 		} catch (e) {
-			new AppError('Invalid token', 401);
+			throw new AppError('Invalid token', 401);
 		}
 	}
+
 }
