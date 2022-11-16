@@ -2,16 +2,16 @@ import { IAccountServices } from '../interfaces/Account/IAccountServices.js';
 import { IUserRepositories } from '../interfaces/User/IUserRepositories.js';
 import { IUserInput, IUserServices } from '../interfaces/User/IUserServices.js';
 import bcrypt from 'bcrypt';
-import { AccountServices } from './account.services.js';
-import { UserRespositories } from '../repositories/users.repositories.js';
 import AppError from '../utils/appError.js';
 import { ITokenHandler } from '../interfaces/Utils/ITokenHandler.js';
-import { TokenHandler } from '../utils/token.js';
 
 export class UserServices implements IUserServices {
-	public userRepository: IUserRepositories = new UserRespositories();
-	public accountServices: IAccountServices = new AccountServices();
-	public tokenHandler: ITokenHandler = new TokenHandler();
+
+	constructor(
+		private userRepository: IUserRepositories,
+		private accountServices: IAccountServices,
+		private tokenHandler: ITokenHandler
+	){}
 
 	async createUser(userInfo: IUserInput): Promise<void> {
 		const user = await this.userRepository.findByUsername(userInfo.username);
@@ -36,7 +36,7 @@ export class UserServices implements IUserServices {
 		const correctPass = bcrypt.compareSync(userInfo.password, user.password); 
 		if(!correctPass) throw new AppError('Username or password are incorrect', 404);
 
-		const token = this.tokenHandler.createToken(user.id);
+		const token = this.tokenHandler.createToken({id: user.id, accountId: user.accountId});
 		return token;
 	}
 }

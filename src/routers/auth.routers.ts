@@ -1,24 +1,20 @@
 import { Router } from 'express';
-import { UserControllers } from '../controllers/auth.controllers.js';
-import { IUserControllers } from '../interfaces/User/IUserControllers.js';
-import { UserSchemas } from '../schemas/user.schemas.js';
+import {userController, userSchemas} from '../implementations/user.js';
+import { Request, Response} from 'express';
 
-export default class AuthRouters{
-	public userController: IUserControllers = new UserControllers();
-	public authRouters: Router = Router();
-	public userSchemas = new UserSchemas();
+//TODO: mover o validate para dentro da que função
+const authRouters: Router = Router();
 
-	constructor(){
-		this.signup();
-		this.singin();
-	}
+authRouters.post('/signup', userSchemas.authSchema().validate,
+	async (req: Request, res: Response) => {
+		await userController.create(req, res);
+	});
 
-	async signup(){
-		this.authRouters.post('/signup',this.userSchemas.authSchema().validate.bind(this.userSchemas),this.userController.create.bind(this.userController));
-	}
+authRouters.post('/signin', 
+	userSchemas.authSchema().validate, 
+	async (req: Request, res: Response) => {
+		await userController.login(req, res);
+	});
 
-	async singin(){
-		this.authRouters.post('/signin', this.userSchemas.authSchema().validate.bind(this.userSchemas),this.userController.login.bind(this.userController));
-	}
+export default authRouters;
 
-}

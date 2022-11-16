@@ -1,7 +1,7 @@
 import { Users } from '@prisma/client';
 
-export type Id = Users['id'];
+export type ITokenPayload = Omit<Users,'username'| 'password'> ;
 export interface ITokenHandler{
-	createToken(id: Id): string;
+	createToken(tokenPayload: ITokenPayload): string;
 	validateToken(token: string): void;
 }
