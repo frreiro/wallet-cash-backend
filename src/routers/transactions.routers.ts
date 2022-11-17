@@ -1,15 +1,15 @@
 import { Router,Request,  Response, NextFunction } from 'express';
 import { createTransactionController, createTransactionMiddleware } from '../useCases/createTransaction/index.js';
-import { readUserAccountController } from '../useCases/readUserAccount/index.js';
 import { readUserTransactionsController } from '../useCases/readUserTransactions/index.js';
 import { tokenHandlerMiddleware } from '../useCases/tokenHandler/index.js';
 
 const transactionsRouters = Router();
 
 
-transactionsRouters.use(async (req: Request, res: Response, next: NextFunction) => {
-	await tokenHandlerMiddleware.handle(req, res, next);
-});
+transactionsRouters.use(
+	async (req: Request, res: Response, next: NextFunction) => {
+		await tokenHandlerMiddleware.handle(req, res, next);
+	});
 
 transactionsRouters.post('/transactions', 
 	async (req: Request, res: Response, next: NextFunction) => {

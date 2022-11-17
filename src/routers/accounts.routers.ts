@@ -5,9 +5,10 @@ import { tokenHandlerMiddleware } from '../useCases/tokenHandler/index.js';
 const accountRouters = Router();
 
 
-accountRouters.use(async (req: Request, res: Response, next: NextFunction) => {
-	await tokenHandlerMiddleware.handle(req, res, next);
-});
+accountRouters.use(
+	async (req: Request, res: Response, next: NextFunction) => {
+		await tokenHandlerMiddleware.handle(req, res, next);
+	});
 
 accountRouters.get('/account',
 	async (req, res) => {

@@ -14,7 +14,7 @@ export class TokenHandlerMiddleware{
 		const token = authorization?.replace('Bearer ', '').trim();
 		if (token === 'undefined' || null || undefined) throw new AppError('No token found', 401);
 
-		const userData = this.tokeHandlerUseCase.execute(token);
+		const userData = await this.tokeHandlerUseCase.execute(token);
 		res.locals.userInfo = userData;
 		next();
 	}
