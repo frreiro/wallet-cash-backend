@@ -1,4 +1,4 @@
-import { IAccountRepositories } from '../interfaces/Account/IAccountRepositories.js';
+import { IAccountRepositories } from './interfaces/IAccountRepositories.js';
 import { prisma } from '../config/database.js';
 import { Accounts } from '@prisma/client';
 import { Account } from '../entities/Account.js';

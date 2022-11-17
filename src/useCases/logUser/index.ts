@@ -1,5 +1,5 @@
 import { UserRespositories } from '../../repositories/users.repositories.js';
-import { TokenHandler } from '../../utils/token.js';
+import { tokenHandlerUseCase } from '../tokenHandler/index.js';
 import { LogUserController } from './logUser.controller.js';
 import { LogUserMiddleware } from './logUser.middleware.js';
 import { LogUserUseCase } from './logUser.useCase.js';
@@ -10,10 +10,9 @@ const logUserMiddleware = new LogUserMiddleware(
 );
 
 const userRepositories = new UserRespositories();
-const tokenHandler = new TokenHandler();
 const logUserUseCase = new LogUserUseCase(
 	userRepositories,
-	tokenHandler
+	tokenHandlerUseCase
 );
 const logUserController = new LogUserController(
 	logUserUseCase

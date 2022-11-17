@@ -2,9 +2,9 @@ import bcrypt from 'bcrypt';
 import AppError from '../../utils/appError.js';
 import { User } from '../../entities/User.js';
 import { Account } from '../../entities/Account.js';
-import { IUserRepositories } from '../../interfaces/User/IUserRepositories.js';
+import { IUserRepositories } from '../../repositories/interfaces/IUserRepositories.js';
 import { ICreateUserDTO } from './createUser.DTO.js';
-import { IAccountRepositories } from '../../interfaces/Account/IAccountRepositories.js';
+import { IAccountRepositories } from '../../repositories/interfaces/IAccountRepositories.js';
 
 export class CreateUserUseCase{
 

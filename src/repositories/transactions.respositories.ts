@@ -1,7 +1,6 @@
-import { ITransactionDBReturn, ITransactionsRepositories, ITransactionVisualizer } from '../interfaces/Transactions/ITransactionsRepositories.js';
+import { ITransactionDBReturn, ITransactionsRepositories } from './interfaces/ITransactionsRepositories.js';
 import { prisma } from '../config/database.js';
 import { Transaction } from '../entities/Transactions.js';
-import { Filters } from '../useCases/readUserTransactions/readUserTransactons.DTO.js';
 
 export class TransactionRepositories implements ITransactionsRepositories{
 	async findByUserId(userId: number) : Promise<ITransactionDBReturn[]> {

@@ -1,6 +1,6 @@
 import { Transaction } from '../../entities/Transactions.js';
-import { IAccountRepositories } from '../../interfaces/Account/IAccountRepositories.js';
-import { ITransactionsRepositories } from '../../interfaces/Transactions/ITransactionsRepositories.js';
+import { IAccountRepositories } from '../../repositories/interfaces/IAccountRepositories.js';
+import { ITransactionsRepositories } from '../../repositories/interfaces/ITransactionsRepositories.js';
 import AppError from '../../utils/appError.js';
 import { ICreateTransactionDTO } from './createTransaction.DTO.js';
 

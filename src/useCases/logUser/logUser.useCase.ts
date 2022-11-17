@@ -1,14 +1,14 @@
 import bcrypt from 'bcrypt';
 import AppError from '../../utils/appError.js';
 import { ILogUserDTO } from './logUser.DTO.js';
-import { IUserRepositories } from '../../interfaces/User/IUserRepositories.js';
-import { ITokenHandler } from '../../interfaces/Utils/ITokenHandler.js';
+import { IUserRepositories } from '../../repositories/interfaces/IUserRepositories.js';
+import { TokenHandlerUseCase } from '../tokenHandler/tokenHandler.useCase.js';
 
 export class LogUserUseCase {
 
 	constructor(
 		private userRepository:IUserRepositories,
-		private tokenHandler: ITokenHandler
+		private tokenHandlerUseCase: TokenHandlerUseCase
 	){}
 
 	async execute(data:ILogUserDTO ){
@@ -18,7 +18,7 @@ export class LogUserUseCase {
 		const correctPass = bcrypt.compareSync(data.password, user.password); 
 		if(!correctPass) throw new AppError('Username or password are incorrect', 404);
 
-		const token = this.tokenHandler.createToken({id: user.id, accountId: user.accountId});
+		const token = this.tokenHandlerUseCase.createToken({id: user.id, accountId: user.accountId});
 		return token;
 	}
 }
