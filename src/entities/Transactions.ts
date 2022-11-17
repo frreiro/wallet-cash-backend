@@ -1,4 +1,6 @@
-export class Transaction {
+import { Transactions } from '@prisma/client';
+
+export class Transaction implements Transactions{
 	public readonly id: number;
 	public debitedAccountId: number;
 	public creditedAccountId: number;

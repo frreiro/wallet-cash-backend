@@ -37,7 +37,7 @@ model Transactions {
 	value Int
 	createdAt DateTime @default(now())
 	debitedAccount Accounts @relation("accountDebited", fields: [debitedAccountId], references: [id])
-	creditedAccout Accounts @relation("accountCredited",fields: [creditedAccountId], references: [id])
+	creditedAccount Accounts @relation("accountCredited",fields: [creditedAccountId], references: [id])
 
 	@@map("transactions")
 }

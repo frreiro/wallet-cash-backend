@@ -2,6 +2,7 @@ import { Router,Request,  Response, NextFunction } from 'express';
 import { accountControllers } from '../implementations/account.js';
 import { tokenMiddleware, transactionSchema } from '../implementations/transactions.js';
 import { createTransactionController, createTransactionMiddleware } from '../useCases/createTransaction/index.js';
+import { readUserTransactionsController } from '../useCases/readUserTransactions/index.js';
 
 const transactionsRouters = Router();
 
@@ -21,6 +22,12 @@ transactionsRouters.post('/transactions',
 	},
 	async (req: Request, res: Response) => {
 		await createTransactionController.handle(req, res);
+	});
+
+
+transactionsRouters.get('/transactions', 
+	async (req: Request, res: Response) => {
+		await readUserTransactionsController.handle(req, res);
 	});
 
 export default transactionsRouters;
