@@ -1,0 +1,25 @@
+import { UserRespositories } from '../../repositories/users.repositories.js';
+import { TokenHandler } from '../../utils/token.js';
+import { LogUserController } from './logUser.controller.js';
+import { LogUserMiddleware } from './logUser.middleware.js';
+import { LogUserUseCase } from './logUser.useCase.js';
+import { logUserSchema } from './schema/logUser.schema.js';
+
+const logUserMiddleware = new LogUserMiddleware(
+	logUserSchema
+);
+
+const userRepositories = new UserRespositories();
+const tokenHandler = new TokenHandler();
+const logUserUseCase = new LogUserUseCase(
+	userRepositories,
+	tokenHandler
+);
+const logUserController = new LogUserController(
+	logUserUseCase
+);
+
+export {
+	logUserMiddleware,
+	logUserController
+};

@@ -1,5 +1,4 @@
 import { Request,Response } from 'express';
-import { CreateUserMiddleware } from './createUser.middleware.js';
 import { CreateUserUseCase } from './createUser.useCase.js';
 
 export class CreateUserController {

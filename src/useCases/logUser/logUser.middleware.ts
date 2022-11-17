@@ -1,16 +1,16 @@
-import { Response,Request, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import AppError from '../../utils/appError.js';
-import { ICreateUserDTO } from './createUser.DTO.js';
+import { ILogUserDTO } from './logUser.DTO.js';
 
-export class CreateUserMiddleware {
+export class LogUserMiddleware {
 
 	constructor(
-		private createUserSchema: Joi.ObjectSchema<ICreateUserDTO>,
+		private logUserSchema: Joi.ObjectSchema<ILogUserDTO>
 	){}
 
 	async handle(req: Request, res: Response,next: NextFunction): Promise<void>{
-		const {error} = this.createUserSchema.validate(req.body);
+		const {error} = this.logUserSchema.validate(req.body);
 		if(error) throw new AppError(error.details.map(detail => detail.message).join(''), 422);
 		next();
 	}
