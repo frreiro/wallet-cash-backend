@@ -7,8 +7,12 @@ import { errorHandlerMiddleware } from './middlewares/errorHandleMiddleware.js';
 dotenv.config();
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+
 app.use(routers);
+
 app.use(errorHandlerMiddleware);
+
 export default app;
