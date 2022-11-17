@@ -1,6 +1,6 @@
-import Joi from 'joi';
-import { IUserInput } from './IUserServices.js';
+import Joi  from 'joi';
+import { Schemas } from '../../middlewares/schemas.js';
 
-export interface IUserSchemas{
-	authSchema(): void
+export interface IUserSchemas extends Schemas{
+	authSchema(): Joi.ObjectSchema
 }

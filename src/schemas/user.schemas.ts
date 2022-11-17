@@ -11,7 +11,7 @@ export class UserSchemas extends Schemas implements IUserSchemas{
 			username: Joi.string().min(3).required(),
 			password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$/).required()
 		});
-		return this;
+		return this.schema;
 	}
 	
 }

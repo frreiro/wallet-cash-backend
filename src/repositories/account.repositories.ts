@@ -1,15 +1,15 @@
 import { IAccountRepositories } from '../interfaces/Account/IAccountRepositories.js';
 import { prisma } from '../config/database.js';
 import { Accounts } from '@prisma/client';
+import { Account } from '../entities/Account.js';
 
 export class AccountRepositories implements IAccountRepositories{
-	async create(): Promise<number> {
-		const account = await prisma.accounts.create({
-			data: {
-				balance: 10000
-			}
+
+	async create(account: Account): Promise<number> {
+		const accountData = await prisma.accounts.create({
+			data: account
 		});
-		return account.id;
+		return accountData.id;
 	}
 
 
@@ -20,5 +20,43 @@ export class AccountRepositories implements IAccountRepositories{
 			}
 		});
 		return account;
+	}
+
+	async findAccountByUsername(username: string): Promise<Accounts> {
+		const account = await prisma.accounts.findFirst({
+			where: {
+				user: {
+					username: username
+				}
+			}
+		});
+		return account;
+	}
+	
+	async transferAmount(outAccountId: number, inAccountId: number, amount: number): Promise<void> {
+		const subtractAmount = prisma.accounts.update({
+			where: {
+				id: outAccountId,
+			},
+			data: {
+				balance:{
+					decrement: amount
+				}
+			}
+		});	
+
+		const addAmount = prisma.accounts.update({
+			where: {
+				id: inAccountId,
+			},
+
+			data: {
+				balance: {
+					increment: amount
+				}
+			}
+		});
+
+		await prisma.$transaction([subtractAmount, addAmount]);
 	}
 }

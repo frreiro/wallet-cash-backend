@@ -4,12 +4,8 @@ import { UserRespositories } from '../repositories/users.repositories.js';
 import { TokenHandler } from '../utils/token.js';
 import { AccountServices } from '../services/account.services.js';
 import { UserSchemas } from '../schemas/user.schemas.js';
-import { AccountRepositories } from '../repositories/account.repositories.js';
+import { accountServices } from './account.js';
 
-const accountRepositories = new AccountRepositories();
-const accountServices = new AccountServices(
-	accountRepositories
-);
 const tokenHandler = new TokenHandler();
 const userRespositories = new UserRespositories();
 	
