@@ -1,6 +1,7 @@
 import { Router,Request,  Response, NextFunction } from 'express';
 import { accountControllers } from '../implementations/account.js';
 import { tokenMiddleware, transactionSchema } from '../implementations/transactions.js';
+import { createTransactionController, createTransactionMiddleware } from '../useCases/createTransaction/index.js';
 
 const transactionsRouters = Router();
 
@@ -14,11 +15,12 @@ transactionsRouters.get('/account',
 		await accountControllers.getBalance(req, res);
 	});
 
-transactionsRouters.post('/transactions',
-	transactionSchema.transactionSchema().validate,
-	async (req, res) => {
-		await accountControllers.createTransfer(req, res);
+transactionsRouters.post('/transactions', 
+	async (req: Request, res: Response, next: NextFunction) => {
+		await createTransactionMiddleware.handle(req, res, next);
+	},
+	async (req: Request, res: Response) => {
+		await createTransactionController.handle(req, res);
 	});
-
 
 export default transactionsRouters;

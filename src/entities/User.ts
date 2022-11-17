@@ -10,4 +10,5 @@ export class User implements Users{
 	constructor(user: Omit<Users, 'id'>){
 		Object.assign(this, user);
 	}
+
 }

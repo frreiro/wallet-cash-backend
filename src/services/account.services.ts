@@ -31,7 +31,7 @@ export class AccountServices implements IAccountServices{
 		if(!receiveAccount) throw new AppError('Account do not exist');
 
 		await this.accountRepositories.transferAmount(leftAccount.id, receiveAccount.id, amount);
-		await this.transactionsRepositories.insert(leftAccount.id, receiveAccount.id, amount);
+		//await this.transactionsRepositories.insert(leftAccount.id, receiveAccount.id, amount);
 	}
 
 }

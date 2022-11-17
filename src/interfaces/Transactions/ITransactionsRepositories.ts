@@ -1,5 +1,5 @@
-import { Accounts, Transactions } from '@prisma/client';
+import { Transaction } from '../../entities/Transactions.js';
 
 export interface ITransactionsRepositories{
-	insert(debitedAcountId: Accounts['id'],creditedAcountId: Accounts['id'], value: Transactions['value'])
+	insert(transaction: Omit<Transaction,'id'| 'createdAt'>) : Promise<void>;
 }
