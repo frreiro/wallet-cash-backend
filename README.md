@@ -1,5 +1,5 @@
 <div align="center" >
-  <img width="150px" src="https://user-images.githubusercontent.com/98192816/202606423-a20ebdab-f459-48ef-b3fd-8ac6ebf84126.png" alt="ng-logo" width="400">
+  <img width="150px" src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4b0.svg" alt="ng-logo" width="400">
   <br>
   <br>
   <h1>NG Cash</h1>
