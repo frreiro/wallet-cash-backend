@@ -8,7 +8,7 @@
 ## 📝 Description
 
 
-NG.cash is a private web bank API that allows users to make transactions between themselves
+NG.cash is a private web wallet API that allows users to make transactions between themselves, this project is a challenge for a job at NG.CASH.
 
 ## 🚀 Technologies
 
