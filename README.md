@@ -1,5 +1,5 @@
 <div align="center" >
-  <img width="150px" src="" alt="uvu" width="400">
+  <img width="150px" src="https://user-images.githubusercontent.com/98192816/202606423-a20ebdab-f459-48ef-b3fd-8ac6ebf84126.png" alt="ng-logo" width="400">
   <br>
   <br>
   <h1>NG Cash</h1>
