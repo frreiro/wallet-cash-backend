@@ -1,4 +1,4 @@
-import { IAccountRepositories } from './interfaces/IAccountRepositories.js';
+import { IAccountRepositories, IAccountVisualizer } from './interfaces/IAccountRepositories.js';
 import { prisma } from '../config/database.js';
 import { Accounts } from '@prisma/client';
 import { Account } from '../entities/Account.js';
@@ -13,10 +13,21 @@ export class AccountRepositories implements IAccountRepositories{
 	}
 
 
-	async findAccountById(id: number): Promise<Accounts> {
+	async findAccountById(id: number): Promise<IAccountVisualizer> {
 		const account = await prisma.accounts.findFirst({
 			where: {
 				id: id
+			},
+
+			select: {
+				id: true,
+				balance: true,
+				user: {
+					select: {
+						id: true,
+						username: true
+					}
+				}
 			}
 		});
 		return account;

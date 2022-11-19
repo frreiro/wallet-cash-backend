@@ -8,7 +8,13 @@ export class ReadUserAccountUseCase{
 	){}
 
 	async execute(data: IReadUserAccountDTO){
-		const userAccount = this.accountRespositories.findAccountById(data.accountId);
-		return userAccount;
+		const userAccount = await this.accountRespositories.findAccountById(data.accountId);
+		const userAccountData = {
+			userId: userAccount.user.id,
+			username: userAccount.user.username,
+			accountId: userAccount.id,
+			balance: userAccount.balance
+		};
+		return userAccountData;
 	}
 }

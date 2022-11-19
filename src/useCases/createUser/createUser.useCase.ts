@@ -15,7 +15,7 @@ export class CreateUserUseCase{
 	
 	async execute(data: ICreateUserDTO){
 		const userAlreadyExist = await this.userRepositories.findByUsername(data.username);
-		if(userAlreadyExist) throw new AppError('Username already exists', 402);
+		if(userAlreadyExist) throw new AppError('Username already exists', 409);
 
 
 		const userAccountId = await this.createNewAccountAndReturnId();

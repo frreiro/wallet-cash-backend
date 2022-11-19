@@ -110,7 +110,9 @@ $ yarn run docker:start
   - response: 
 	```json
 	{
-		"id": 0000,
+		"userId": 0000,
+		"username": "yourusername",
+		"accountId": 0000,
 		"balance": 0000,
 	}
 	```
