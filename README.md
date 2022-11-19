@@ -97,8 +97,8 @@ $ yarn run docker:start
   - body:
 	```json
 	{
-		"id": 0000,
-		"balance": 0000,
+		"username": "yourusername",
+		"password": "yourpassword",
 	}
 	```
 - **GET** `/account` - Get informations about user account 
@@ -110,8 +110,8 @@ $ yarn run docker:start
   - response: 
 	```json
 	{
-		"username": "yourusername",
-		"password": "yourpassword",
+		"id": 0000,
+		"balance": 0000,
 	}
 	```
 - **POST** `/transactons` - Create a transaction 
