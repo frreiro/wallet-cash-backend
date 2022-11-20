@@ -47,7 +47,8 @@ export class TransactionRepositories implements ITransactionsRepositories{
 					}
 				},
 				value: true,
-				id:true
+				id:true,
+				createdAt: true
 			}
 		});
 	}
@@ -84,7 +85,8 @@ export class TransactionRepositories implements ITransactionsRepositories{
 					}
 				},
 				value: true,
-				id:true
+				id:true,
+				createdAt: true
 			}
 		});
 	}
@@ -123,7 +125,8 @@ export class TransactionRepositories implements ITransactionsRepositories{
 					}
 				},
 				value: true,
-				id:true
+				id:true,
+				createdAt: true
 			}
 		});
 	}

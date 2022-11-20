@@ -9,7 +9,7 @@ export class ReadUserTransactionsUseCase{
 
 	async execute(data: IReadUserTransactionsDTO){
 		const transactions = await this.findCorrectTransactionListByFilter(data);
-		const filteredTransactions = this.manipulateDataFromDb(transactions);
+		const filteredTransactions = this.manipulateDataFromDb(transactions, data.user.accountId);
 		return filteredTransactions;
 
 	}
@@ -27,13 +27,15 @@ export class ReadUserTransactionsUseCase{
 		}
 	}
 
-	manipulateDataFromDb(transactions: ITransactionDBReturn[]){
+	manipulateDataFromDb(transactions: ITransactionDBReturn[], accountId: number){
 		return transactions.map((transaction) => {
 			return {
 				id: transaction.id,
 				from: transaction.debitedAccount.user,
 				to: transaction.creditedAccount.user,
 				value: transaction.value,
+				type: transaction.debitedAccount.user.accountId === accountId ? 'cash-out' : 'cash-in',
+				date: transaction.createdAt
 			};
 		});
 	}

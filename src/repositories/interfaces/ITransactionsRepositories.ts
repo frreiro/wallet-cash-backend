@@ -4,13 +4,18 @@ import { User } from '../../entities/User.js';
 export interface ITransactionDBReturn {
 	value: number;
 	id: number;
+	createdAt: Date;
 	debitedAccount: { 
 		user: {
+			id: number;
+			accountId:number;
 			username: string;
 		}
 	}
 	creditedAccount: { 
 		user: {
+			id: number;
+			accountId:number;
 			username: string;
 		}
 	}
