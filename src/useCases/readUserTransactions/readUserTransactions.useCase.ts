@@ -1,5 +1,4 @@
 import { ITransactionDBReturn, ITransactionsRepositories } from '../../repositories/interfaces/ITransactionsRepositories.js';
-import AppError from '../../utils/appError.js';
 import { IReadUserTransactionsDTO } from './readUserTransactons.DTO.js';
 
 export class ReadUserTransactionsUseCase{

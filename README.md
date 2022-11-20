@@ -144,19 +144,19 @@ $ yarn run docker:start
   - response:
 	```json
 	[{
-		"value": 0000,
-		"id": 0000,
-		"debitedAccount": { 
-			"user": {
-			"username": "someursername",
-			}	
+		"id": 00,
+		"from": {
+			"id": 00,
+			"username": "someusername",
+			"accountId": 00
 		},
-		"creditedAccount": { 
-			"user": {
-				"username": "someusername",
-			}
-		}
-	}]
+		"to": {
+			"id": 00,
+			"username": "someusername",
+			"accountId": 00
+		},
+		"value": 0000
+	}]	
 	```
 - **GET** `/health` - Get API health
     - headers: 
