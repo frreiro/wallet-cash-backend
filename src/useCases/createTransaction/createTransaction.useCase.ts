@@ -16,11 +16,11 @@ export class CreateTransactionUseCase {
 		if(data.debitedUsername === data.creditedUsername) throw new AppError('Can not transfer to yourself');
 
 		const debitedAccount = await this.accountRepositories.findAccountByUsername(data.debitedUsername);
-		if(debitedAccount.balance < data.value) throw new AppError('Account do not have enought balance');
-		if(!debitedAccount) throw new AppError('Account do not exist');
+		if(debitedAccount.balance < data.value) throw new AppError('Account do not have enought balance',400);
+		if(!debitedAccount) throw new AppError('Account do not exist',404);
 		
 		const creditedAccount = await this.accountRepositories.findAccountByUsername(data.creditedUsername);
-		if(!creditedAccount) throw new AppError('Account do not exist');
+		if(!creditedAccount) throw new AppError('Account do not exist',404);
 
 		const transaction = new Transaction({
 			debitedAccountId: debitedAccount.id,
