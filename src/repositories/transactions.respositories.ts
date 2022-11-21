@@ -12,12 +12,12 @@ export class TransactionRepositories implements ITransactionsRepositories{
 
 	async findByUserIdAndOrFilter(userId: number, filter?: Filters): Promise<ITransactionDBReturn[]> {
 		const buildFilter: Prisma.TransactionsWhereInput = {};
-		const day = dayjs.utc(filter.date).format('YYYY-MM-DDT00:00:00[Z]');
-		const dayAfter = dayjs.utc(filter.date).add(1,'day').format('YYYY-MM-DDT00:00:00[Z]');
+		const dayAfter = dayjs.utc(filter.date).add(1,'day').format('YYYY-MM-DDTHH:mm:ss[Z]');
+
 		
 		if(filter.date){
 			buildFilter.createdAt = {
-				gte: new Date(day),
+				gte: new Date(filter.date),
 				lte: new Date(dayAfter)
 
 			};
@@ -59,6 +59,9 @@ export class TransactionRepositories implements ITransactionsRepositories{
 		}
 
 		return await prisma.transactions.findMany({
+			orderBy: {
+				createdAt: 'desc'
+			},
 			where: {
 				...buildFilter
 			},
