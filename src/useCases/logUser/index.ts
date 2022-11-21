@@ -1,5 +1,5 @@
 import { UserRespositories } from '../../repositories/users.repositories.js';
-import { tokenHandlerUseCase } from '../tokenHandler/index.js';
+import { tokenHandlerUseCase } from '../../handlers/useCases/tokenHandler/index.js';
 import { LogUserController } from './logUser.controller.js';
 import { LogUserMiddleware } from './logUser.middleware.js';
 import { LogUserUseCase } from './logUser.useCase.js';

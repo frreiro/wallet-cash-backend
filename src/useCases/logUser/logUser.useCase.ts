@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import AppError from '../../utils/appError.js';
 import { ILogUserDTO } from './logUser.DTO.js';
 import { IUserRepositories } from '../../repositories/interfaces/IUserRepositories.js';
-import { TokenHandlerUseCase } from '../tokenHandler/tokenHandler.useCase.js';
+import { TokenHandlerUseCase } from '../../handlers/useCases/tokenHandler/tokenHandler.useCase.js';
 
 export class LogUserUseCase {
 

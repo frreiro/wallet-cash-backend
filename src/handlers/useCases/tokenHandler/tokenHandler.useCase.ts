@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { IUserRepositories } from '../../repositories/interfaces/IUserRepositories.js';
-import AppError from '../../utils/appError.js';
+import { IUserRepositories } from '../../../repositories/interfaces/IUserRepositories.js';
+import AppError from '../../../utils/appError.js';
 import { ITokenHandlerDTO } from './tokenHandler.DTO.js';
 
 

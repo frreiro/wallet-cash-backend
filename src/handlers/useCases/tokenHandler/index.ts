@@ -1,4 +1,4 @@
-import { UserRespositories } from '../../repositories/users.repositories.js';
+import { UserRespositories } from '../../../repositories/users.repositories.js';
 import { TokenHandlerMiddleware } from './tokenHandler.middleware.js';
 import { TokenHandlerUseCase } from './tokenHandler.useCase.js';
 

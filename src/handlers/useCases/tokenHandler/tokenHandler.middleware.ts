@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import AppError from '../../utils/appError.js';
+import AppError from '../../../utils/appError.js';
 import { TokenHandlerUseCase } from './tokenHandler.useCase.js';
 
 export class TokenHandlerMiddleware{

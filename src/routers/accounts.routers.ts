@@ -1,6 +1,6 @@
 import { Router,Request,  Response, NextFunction } from 'express';
 import { readUserAccountController } from '../useCases/readUserAccount/index.js';
-import { tokenHandlerMiddleware } from '../useCases/tokenHandler/index.js';
+import { tokenHandlerMiddleware } from '../handlers/useCases/tokenHandler/index.js';
 
 const accountRouters = Router();
 

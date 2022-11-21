@@ -1,7 +1,7 @@
 import { Router,Request,  Response, NextFunction } from 'express';
 import { createTransactionController, createTransactionMiddleware } from '../useCases/createTransaction/index.js';
 import { readUserTransactionsController } from '../useCases/readUserTransactions/index.js';
-import { tokenHandlerMiddleware } from '../useCases/tokenHandler/index.js';
+import { tokenHandlerMiddleware } from '../handlers/useCases/tokenHandler/index.js';
 
 const transactionsRouters = Router();
 
