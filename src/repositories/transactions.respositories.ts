@@ -7,13 +7,8 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
 dayjs.extend(utc);
 
+
 export class TransactionRepositories implements ITransactionsRepositories{
-
-
-
-
-
-
 
 	async findByUserIdAndOrFilter(userId: number, filter?: Filters): Promise<ITransactionDBReturn[]> {
 		const buildFilter: Prisma.TransactionsWhereInput = {};
@@ -42,6 +37,25 @@ export class TransactionRepositories implements ITransactionsRepositories{
 					id: userId,
 				}
 			};
+		}
+
+		if(filter.method != 'cashin' && filter.method !== 'cashout'){
+			buildFilter.OR = [
+				{
+					creditedAccount : {
+						user: {
+							id: userId
+						}
+					}
+				},
+				{
+					debitedAccount: {
+						user: {
+							id: userId
+						}
+					}
+				}
+			];
 		}
 
 		return await prisma.transactions.findMany({
