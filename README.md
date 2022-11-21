@@ -184,6 +184,7 @@ $ yarn run docker:start
   
 ### Query details
   - `method` and `date` can be combined: 
+  - `date` must be passed in Brazil Timezone and will return in Brazil timezone
 
 
 ## 💽 Database
