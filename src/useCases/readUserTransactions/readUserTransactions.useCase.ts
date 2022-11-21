@@ -15,16 +15,7 @@ export class ReadUserTransactionsUseCase{
 	}
 
 	async findCorrectTransactionListByFilter(data: IReadUserTransactionsDTO){
-		if(data.filter.method === 'cashin'){
-			return this.transactionsRepositories.findByUserIdAndCashInFilter(data.user.id);
-		}
-		else if(data.filter.method === 'cashout'){
-			return this.transactionsRepositories.findByUserIdAndCashOutFilter(data.user.id);
-				
-		}
-		else{
-			return this.transactionsRepositories.findByUserId(data.user.id);
-		}
+		return this.transactionsRepositories.findByUserIdAndOrFilter(data.user.id,data.filter);
 	}
 
 	manipulateDataFromDb(transactions: ITransactionDBReturn[], accountId: number){

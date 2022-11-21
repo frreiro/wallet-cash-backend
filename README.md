@@ -135,6 +135,7 @@ $ yarn run docker:start
 	| none | none | none | all transactions | 
  	| `method` | `cashin` | `string` | cash-in transactions | 
  	| `method` | `cashout` | `string` | cash-out transactions | 
+	| `date` | `YYYY-MM-dd` | `Date` | transactions in the day | 
 	
     - headers: 
 		```json
@@ -180,6 +181,9 @@ $ yarn run docker:start
   - `balance`: 
     - Represent the user account balance
     - The last two digits represent the cents
+  
+### Query details
+  - `method` and `date` can be combined: 
 
 
 ## 💽 Database

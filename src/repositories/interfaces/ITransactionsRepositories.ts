@@ -1,5 +1,6 @@
 import { Transaction } from '../../entities/Transactions.js';
 import { User } from '../../entities/User.js';
+import { Filters } from '../../useCases/readUserTransactions/readUserTransactons.DTO';
 
 export interface ITransactionDBReturn {
 	value: number;
@@ -28,8 +29,5 @@ export interface ITransactionVisualizer{
 }
 export interface ITransactionsRepositories{
 	insert(transaction: Omit<Transaction,'id'| 'createdAt'>) : Promise<void>;
-	findByUserId(userId: number): Promise<ITransactionDBReturn[]>;
-	findByUserIdAndCashOutFilter(userId: number): Promise<ITransactionDBReturn[]>;
-	findByUserIdAndCashInFilter(userId: number): Promise<ITransactionDBReturn[]>;
-
+	findByUserIdAndOrFilter(userId: number, filter?:Filters): Promise<ITransactionDBReturn[]>;
 }

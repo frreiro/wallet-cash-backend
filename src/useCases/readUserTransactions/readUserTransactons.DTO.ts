@@ -4,6 +4,7 @@ type Method = 'cashin' | 'cashout'
 
 export type Filters = {
 	method?: Method
+	date?: Date
 }
 
 export interface IReadUserTransactionsDTO{
