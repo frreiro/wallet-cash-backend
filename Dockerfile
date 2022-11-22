@@ -5,4 +5,4 @@ COPY . .
 RUN npm i
 RUN npm run build
 
-CMD ["npm","run", "docker:start"]
+CMD ["npm","run", "docker:init"]

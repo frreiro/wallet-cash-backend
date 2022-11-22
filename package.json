@@ -8,8 +8,9 @@
     "build": "ttsc",
     "start": "node dist/src/server.js",
     "dev:start": "nodemon src/server.ts",
-    "docker:start": "npm run migrate:deploy && node dist/src/server.js",
-    "migrate:deploy": "npx prisma migrate deploy",
+	"docker:start": "docker-compose up",
+    "docker:init": "npm run migrate:deploy && node dist/src/server.js",
+    "migrate:deploy": "npx prisma migrate dev",
     "test": "NODE_ENV=test jest --passWithNoTests --runInBand"
   },
   "author": "Lucas Viana",
