@@ -1,14 +1,14 @@
 <div align="center" >
-  <img width="150px" src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4b0.svg" alt="ng-logo" width="400">
+  <img width="150px" src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4b0.svg" alt="wallet-logo" width="400">
   <br>
   <br>
-  <h1>NG Cash</h1>
+  <h1>Wallet Cash</h1>
 </div>
 
 ## 📝 Description
 
 
-NG.cash is a private web wallet API that allows users to make transactions between themselves, this project is a challenge for a job at NG.CASH.
+wallet.cash is a private web wallet API that allows users to make transactions between themselves
 
 ## 🚀 Technologies
 
@@ -27,17 +27,17 @@ Clone the repository.
 
 ```bash
 # https
-$ git clone https://github.com/frreiro/ng-cash-backend
+$ git clone https://github.com/frreiro/wallet-cash-backend
 # ssh
-$ git clone git@github.com:frreiro/ng-cash-backend.git
+$ git clone git@github.com:frreiro/wallet-cash-backend.git
 ```
 
 Install the dependencies.
 
 ```bash
-$ cd ng-cash-backend && npm install
+$ cd wallet-cash-backend && npm install
 #or
-$ cd ng-cash-backend &&  yarn
+$ cd wallet-cash-backend &&  yarn
 ```
 
 ## 🚀 Usage
@@ -190,7 +190,7 @@ $ yarn run docker:start
 ## 💽 Database
 
 This project uses a [PostgreSQL](https://www.postgresql.org/) database.
-- **Database name:** `ng-cash-db`
+- **Database name:** `wallet-cash-db`
 - **`Tables`:**
   - **`users`:** Stores all users
   - **`transactions`:** Stores all transactions made by users
