@@ -1,25 +1,25 @@
 services:
-  ng-cash-postgres-production:
-    container_name: ng-cash-postgres-production
+  wallet-cash-postgres-production:
+    container_name: wallet-cash-postgres-production
     image: postgres:13-alpine
     restart: always
     env_file:
       - .env.docker
-    ports: 
+    ports:
       - 5433:5432
     volumes:
-    - postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
 
-  ng-cash-application: 
-    container_name: ng-cash-backend
-    build: 
+  wallet-cash-application:
+    container_name: wallet-cash-backend
+    build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '${PORT}:${PORT}'
+      - "${PORT}:${PORT}"
     env_file:
       - .env.docker
     depends_on:
-      - ng-cash-postgres-production
+      - wallet-cash-postgres-production
 volumes:
   postgres:
